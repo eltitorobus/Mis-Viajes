@@ -1,0 +1,109 @@
+/*
+    Created on   : 18 dic 2021, 12:47:24
+    Author       : Alejandro Calvo Toribio
+
+    cultura.css -> CSS para los mapas interactivos de cultura
+                    -> Creado a partir de mapa.css
+*/
+
+/* Fondo común a todo el sitio*/
+body{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Para que el contenedor se encuadre */
+html, body, main {
+  height: 100%;
+  width: 100%;
+}
+
+  /* Lo separo del NAV y un poco del final de la página y en el eje X */
+main {
+  padding: 60px 15px 10px;
+}
+
+/* NAVBAR */
+
+  /* Sobrescribir las clases de dropwdown porque hace un focus que pierde 
+    el estilo dark */
+
+.dropdown-item{
+    color: rgba(255,255,255,.55);
+}
+
+.dropdown-item:hover{
+    color: rgba(255,255,255,.75);
+}
+
+/* Item del nav para hacer log in o log out --> Un poco más de color para distinguirlo del resto del NAV*/
+#logInOut{
+    color:rgba(255,255,255,0.85);
+}
+
+#logInOut:hover{
+    color: rgba(255,255,255);
+}
+
+
+
+#contenedor {
+  width: auto;
+  height: auto;
+  
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.90);
+  /* Para que no me oculte el modal*/
+  z-index: 1;
+}
+
+
+/* Especiales de paises.html */
+.select{
+    text-align: center;
+}
+
+.oculto{
+    display:none;
+}
+
+/* Es para todos los links (a) del documento salvo el NAV. No se usa "a" porque 
+    si se pone en general --> Afecta al Navbar
+    si se pone body --> Afecta al Navbar
+    si se pone en main --> No afecta a los del footter
+*/
+.shadow-link{
+    color: #444B5F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    font-weight: bolder;
+    text-shadow: 0.1em 0.1em 0.6em #222A3F;
+}
+.shadow-link:hover{
+    color: #222A3F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Para el botón de salir, acorde al resto de la web */
+.btn {
+    background: #222A3F;
+    color: #F1F1F1;
+    font-size: 16px;
+    font-weight: 700!important;
+
+    padding: 10px;
+
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    transition: 0.5s ease-in;
+    
+    /* Le anulo el fondo de texto blanco que hereda del caption para que se lea bien*/
+    text-shadow: 0 0 0 #222A3F;
+}
+
+.btn:hover{
+    background: #444B5F;
+    color: #222A3F;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+}

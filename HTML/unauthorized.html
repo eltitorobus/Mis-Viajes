@@ -1,0 +1,42 @@
+<!doctype html>
+<!--
+    Created on : 15 dic 2021, 16:31:56
+    Author     : Alejandro Calvo Toribio
+
+    unauthorized -> Página que se muestra ante un intento de acceso no
+                      autorizado
+                      a las páginas de mapa o destino
+                 -> Powered by BootStrap 5
+-->
+<html lang="es">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Alejandro Calvo">
+        <meta name="description" content="Página para evitar acceso sin login">
+        <title>403: Forbidden</title>
+
+        
+        <!-- CSS -->
+            <!-- Bootstrap 5 CSS -->
+        <link href="../recursos/libs/bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+            <!-- Mis CSS -->
+        <link href="../recursos/css/forbidden.css" rel="stylesheet" type="text/css">
+    
+    </head>
+    <body class="noScroll">
+        <div class="row justify-content-center m-5">
+            <div class="recuadro text-center text-dark">
+                <h1>¡Usuario no reconocido!</h1>
+                <p>Por favor 
+                    <a href="login.html" class="shadow-link">inicie sesión</a> 
+                    si ya tiene un usuario, sino 
+                    <a href="registro.html" class="shadow-link">regístrese</a>, 
+                    o vuelva a la 
+                    <a href="../index.html" class="shadow-link">página de inicio</a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

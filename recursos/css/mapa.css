@@ -1,0 +1,99 @@
+/* 
+    Created on : 15 nov 2021, 10:41:36
+    Author     : Alejandro Calvo Toribio
+
+        -> Estilo para el marco del mapa y todas las funciones que tiene dentro
+*/
+body{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* Quiero que se ajuste a la pantalla */
+html, body, main {
+  height: 100%;
+  width: 100%;
+}
+
+  /* Lo separo del NAV y un poco del final de la página */
+main {
+  padding: 60px 15px 5px;
+}
+  
+  /* Le doy un sombreado al marco, le digo que coja todo lo que pueda y redondeo las esquinas*/
+  /* La última versión de LeafLet me estropeaba el modal y le tengo que forzar el z-index */
+#map {
+  /* Lo anulo porque sino me oculta el modal la nueva versión de Leaflet display: block;-*/
+  width: auto;
+  height: 100%;
+  
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.90);
+  /* Para que no me oculte el modal*/
+  z-index: 1;
+}
+  
+/* Estilo de la leyenda dinámica de la parte superior derecha */
+  /* Del fondo*/
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+  /* Del título y del texto, acorde al resto de la web*/
+.info h4 {
+  margin: 0 0 5px;
+  color: #222A3F;
+}
+.infoText{
+  color: #444B5F;
+}
+
+/* Estilo de la leyenda que informa al usuario que representan los colores */
+
+.legend {
+  line-height: 18px;
+  color: #222A3F;
+  font: Arial, Helvetica, sans-serif;
+  background: rgba(255,255,255,0.9);
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+/* Parte del nav para hacer log out --> Un poco más de color para distinguirlo del resto del NAV*/
+    /* Aquí no hay posibilidad de hacer login porque debes estar registrado */
+#logOut{
+    color:rgba(255,255,255,0.85);
+}
+
+#logOut:hover{
+    color: rgba(255,255,255);
+}
+
+/*IDEM para los mapas de cultura (pero ahí no es necesario estar loggeado) */
+#logInOut{
+    color:rgba(255,255,255,0.85);
+}
+
+#logInOut:hover{
+    color: rgba(255,255,255);
+}
+
+/* Dropdown color común a todas las páginas */
+/* NAVBAR */
+
+  /* Sobrescribir las clases de dropwdown porque hace un focus que pierde el estilo dark */
+
+.dropdown-item{
+    color: rgba(255,255,255,.55);
+}
+
+.dropdown-item:hover{
+    color: rgba(255,255,255,.75);
+}

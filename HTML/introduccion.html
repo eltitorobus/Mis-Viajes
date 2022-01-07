@@ -1,0 +1,441 @@
+<!doctype html>
+<!--
+    Created on : 11 dic 2021, 11:13:47
+    Author     : Alejandro Calvo Toribio
+      
+    introducción-> Página de información general del sitio
+                -> Se informa al usuario de como se utiliza el sitio web
+                -> Powered by BootStrap 5
+-->
+<html lang="es">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Alejandro Calvo">
+    <meta name="description" content="Información de uso del sitio">
+    <title>✈ Get Started ✈</title>
+
+    <!-- CSS -->
+        <!-- Bootstrap 5 CSS -->
+    <link href="../recursos/libs/bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Mis CSS -->
+    <link href="../recursos/css/estilo.css" rel="stylesheet">
+    <link href="../recursos/css/animate.css" rel="stylesheet">
+    <link href="../recursos/css/modal.css" rel="stylesheet">
+    
+    <!-- JS -->
+      <!-- JS: comportamiento "Entrar" del nav -->
+      <script src="../recursos/js/loginLogout.js" crossorigin="anonymous"></script> 
+
+  </head>
+  <body>
+    <header>
+      <!-- Barra de navegación -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <!--Contenedor de los elementos de la navegación-->
+        <div class="container-fluid">
+          <!--Elemento principal de la web-->
+          <a class="navbar-brand" href="../index.html">
+              <img src="../recursos/img/logoWeb.png" alt="Logo Web" width="30" height="24" class="d-inline-block align-text-top"> Mis Viajes
+          </a>
+          <!--Botón hamburguesa que se va a mostrar en móviles-->
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span><!--Icono automático-->
+          </button>
+
+          <!--Contenido al que hace referencia al botón pero que conlas clases de BS aparecerá automáticamente si es más que móvil-->
+          <div id="menuNav" class="collapse navbar-collapse">
+            <!--Lista con todos los elementos de la Web (login a la derecha, separado en teléfonos)-->
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#">Introducción</a></li>
+              <li class="nav-item"><a class="nav-link" href="mapa.html">Mapa</a></li>
+              <li class="nav-item"><a class="nav-link" href="destino.html">Destino</a></li>
+              
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Cultura</a>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown03">
+                  <li><a class="dropdown-item bg-dark" href="./cultura/paises.html">General</a></li>
+                  <li><a class="dropdown-item bg-dark" href="./cultura/poblacion.html">Mapa Población</a></li>
+                  <li><a class="dropdown-item bg-dark" href="./cultura/emisiones.html">Mapa Emisiones CO2</a></li>
+                  <li><a class="dropdown-item bg-dark" href="./cultura/pib.html">Mapa PIB</a></li>
+                    <!-- Aunque parezca reiterativo el bg-dark es para sobrescribir el focus del dropdown-item -->
+                </ul>
+              </li>
+              
+            </ul>
+            <div class="d-flex">
+              <a id="logInOut" class="nav-link" href="login.html">Entrar</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-4 mt-5 text-justify">
+      <!-- MODAL privacidad-->
+      <div id="modal_container_privacy" class="modal-container">
+        <div class="modalPersonalizado">
+          <a class="closeModal" href="#">&times;</a>
+          <div id="contenidoModalIndex">
+            <h1>Privacidad</h1>
+
+            <h2>Datos recogidos</h2>
+
+            <p>Le informamos que no llevamos a cabo ningún tipo 
+              de recogida de datos a excepción de los que usted 
+              introduce para registrarse en la página web. De este modo sólo 
+              tenemos tu <b>nombre</b> de usuario (puede no ser real) y tu 
+              <b>contraseña</b>. No recopilamos información sobre tu ubicación 
+              o IP, preferencias, uso, etc.
+            </p>
+
+            <h2>Tratamiento de los datos</h2>
+
+            <p>Pese a ser mínimo, tienes derecho a la revocación de los 
+              mismos, por ello puedes dar de baja a tu usuario desde 
+              <a href="./HTML/login.html" class="shadow-link">login</a>
+            </p>
+
+            <h2>Motivos</h2>
+
+            <p>No eres un negocio, por lo que no queremos comerciar con tu 
+              información. Podríamos recopilarlos para conocer 
+              como usas la aplicación; pero preferimos preguntarte. Para 
+              ello te proponemos que 
+              <a href="mailto:alejandro.caltor@educa.jcyl.es"
+                class="shadow-link" target="_blank">contactes</a> 
+              con el administrador del sitio
+            </p>
+           </div>
+        </div>
+      </div>
+
+      <!-- MODAL terms-->
+      <div id="modal_container_terms" class="modal-container">
+        <div class="modalPersonalizado">
+          <a class="closeModal" href="#">&times;</a>
+          <div id="contenidoModalIndex" class="text-center">
+            <h1>Términos</h1>
+
+            <h2>Aplicación</h2>
+
+            <p>Estos términos y los de la política de privacidad son 
+              aplicables desde el 26/12/2021 hasta que sean 
+              modificados (con la debida información al usuario).
+            </p>
+
+            <h2>Edad Mínima</h2>
+
+            <p>En estos momentos no existe edad mínima para el uso de la 
+              aplicación Mis Viajes Web
+            </p>
+
+            <h2>Respeto</h2>
+
+            <p>Eres lo más importante y por eso te respetaremos, pero, del 
+              mismo modo, nos gustaría que todos los usuarios de la aplicación 
+              se respetaran entre ellos. La infracción provacará la expulsión.
+            </p>
+
+            <h2>Licencia</h2>
+
+            <p>La licencia de la web es Creative Commons: CC BY-NC</p>
+
+            <img src="../recursos/img/cc.png" alt="licencia"/>
+          </div>
+        </div>
+      </div>
+      
+      <div class="introduccion row-fluid">
+        <div class="col-md-12">
+          <h1 class="pt-3">Get Started</h1>
+          <p class="lead">Aprende a utilizar el sitio web Mis Viajes. Este sitio 
+            web te va a permitir, siempre que estés 
+            <a href="registro.html" class="shadow-link">registrado</a>, 
+            identificar aquellos países en los que has residido o a los que has viajado, 
+            <span class="text-muted fst-italic">¡¡incluso a los que deseas hacerlo!! </span>
+            El proceso es muy sencillo, simplemente debes entrar en la página 
+            <a href="mapa.html" class="shadow-link">mapa</a>
+            , allí vas a ver el mundo y podrás navegar en él, identificando los 
+            países que quieres que se tengan en cuenta. En un mapa no se aprecia 
+            todo un potencial que puede tener un país, por eso existe la página 
+            <a href="destino.html" class="shadow-link">destino</a>
+            , que te ayudará a elegir tu próxima aventura. Como todo buen viajero 
+            seguro que te mueres por conocer curiosidades de otros lugares del 
+            mundo, no te preocupes en la sección de 
+            <span class="fw-bold">cultura</span> 
+            las conocerás, ya sea de forma 
+            <a href="./cultura/paises.html" class="shadow-link">general</a>, 
+            o mediante los mapas interativos de 
+            <a href="./cultura/poblacion.html" class="shadow-link">población</a>, 
+            <a href="./cultura/emisiones.html" class="shadow-link">emisiones</a> o 
+            <a href="./cultura/pib.html" class="shadow-link">PIB</a>
+            . Si eres de los viajeros que planifican bien su viaje, te 
+            recomendamos que sigas leyendo para entender el funcionamiento de 
+            la aplicación; si, por el contrario, eres un aventurero, 
+            <span class="fw-bold">¿Por qué no descubrirlo por tí mismo?</span>
+           </p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider mt-4 mb-5">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Elige la opción <i>Mapa</i> para navegar 
+            por el mundo que has conocido o deseas conocer</h2>
+          
+          <p class="lead">
+            Siempre que hayas 
+            <a href="login.html" class="shadow-link">iniciado sesión</a>, 
+            se te abrirá el mundo de una forma interactiva. Podrás navegar por
+            él, como ya estarás acostumbrado en otras aplicaciones. Nosotros 
+            te invitamos a que, cuando identifiques un país en el que has 
+            estado o deseas estar, hagas click en él porque a continuación
+            te preguntaremos si has residido allí, si has estado de vacaciones
+            o si, por el contrario, quieres que ese país sea un destino futuro. 
+            No te preocupes hombre, todos somos humanos y cometemos errores si 
+            has seleccionado mal el país siempre podrás volver a hacer click 
+            en él para borrar tu elección. Sencillo, ¿No? Además como sabemos 
+            que te encanta rememorar los sitios a los que has ido el 
+            <span class="fst-italic text-muted">mapa te los mostrará cambiando 
+            el color de los mismos.</span> 
+            Seguro que estás deseando comenzar para ver la cara que se le queda 
+            a tus amigos cuando vean tu mapa casi lleno, ¿No es así?
+          </p>
+          
+          <p class="lead">Hay opciones secundarias que deberías conocer. 
+            ¿Deseas conocer el nombre de un país? 
+            <span class="fst-italic">Sítua el ratón encima de él</span> 
+            y te aparecerá en la parte superior derecha ¿Deseas centrar la 
+            vista en un país? 
+            <span class="fst-italic">Haz click con el botón secundario del ratón</span> 
+            ¿Deseas cambiar el estilo del mapa o incluso desactivarlo? 
+            <span class="fst-italic">Sítua el ratón encima del icono situado 
+            en la esquina superior derecha y ¡¡Selecciona el que más te guste!!
+            </span>
+          </p>
+        </div>
+        
+        <div class="col-md-5 text-center">
+          <!-- <img src="../recursos/img/mapa.gif" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="600" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Como utilizar "mapa"</title><rect width="100%" height="100%" fill="#eee"/></img> -->
+          <img src="../recursos/img/mapa.gif" class="featurette-image img-fluid mx-auto mt-5" width="350" height="350" role="img"/>
+        </div>
+      </div><!--Featurette1-->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featuarette-heading">Elige la opción <i>Destino</i> para 
+            que te ayudemos a descubrir cuál va a ser tu próxima aventura
+          </h2>
+            
+          <p class="lead">A todo el mundo le ha pasado en algún momento. Quiero 
+            empezar a viajar pero no sé a dónde, 
+            <span class="fst-italic text-muted">¡¡Hay tanto donde elegir!!</span>
+            También puede ser que ya seas todo un experto y hayas estado en 
+            los destinos más habituales y te estés preguntando cuál puede ser 
+            el nuevo destino. En Mis Viajes somos unos auténticos expertos y 
+            conocemos este mundo al dedillo. Si de verdad que no sabes a dónde 
+            puedes ir, deja que te asesoremos desde 
+            <a href="destino.html" class="shadow-link">destino</a>. Simplemente 
+            deberás rellenar los campos que creas necesarios y nosotros te 
+            indicaremos los posibles destinos que se adecúan a tu elección. 
+            ¿No sabes dónde ir pero quieres que tenga playa sí o sí?, ¿Te 
+            apetece reforzar tu inglés? ¿Quieres unas vacaciones relajadas 
+            dónde se hable tu mismo idioma? o, por el contrario, ¿Quieres 
+            descubrir un destino exótico? 
+            <span class="fw-bold fst-italic text-decoration-underline">Estamos 
+            para ayudarte</span> 
+            Recuerda que puedes elegir que se muestren sólo aquellos que tengan 
+            un posible acceso por tema COVID &#x2623;
+          </p>
+          
+          <p class="lead">Las opciones más interesantes son seleccionables 
+            opcionales, símplemente deberás seleccionar aquellas características 
+            (playa, cultural, etc.), que quieras que tenga tu futuro destino. 
+            ¿Además deseas que filtremos por continente, idioma o situación COVID?
+            <span class="fst-italic">Selecciona "Sí" y te aparecerán las 
+                posibles opciones seleccionables</span>
+          </p>
+          
+          <p class="lead">Por último, elige si quieres que se muestren paises 
+            nuevos o aquellos en los que ya has estado. Cuando termines, pulsa 
+            buscar. Si existen posibles destinos que se adecúen a tu elección, 
+            se mostrarán en una barra desplegable. Cualquier destino que elijas 
+            será marcado como deseado y se te mostrará 
+            <span class="fw-bold">directamente y sin que hagas nada</span> en el mapa 
+            <span class="fst-italic">¿No es maravilloso?</span> 
+            Simplemente recuerda que si ya has estado en ese país no lo haremos.
+            <span class="fw-bold">No queremos borrar tus preciosos recuerdos &#9785;</span>
+          </p>
+        </div>
+        <div class="col-md-5 order-md-1 text-center">
+          <img src="../recursos/img/destino.gif" class="featurette-image img-fluid mx-auto mt-5" width="350" height="350" role="img"/>
+        </div>
+      </div><!--Featurette2-->
+      
+      
+      <hr class="featurette-divider">
+      
+      
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Elige la opción 
+            <span class="fst-italic text-muted">Cultura</span> para 
+            aprender un poco más de este bonito mundo que nos rodea
+          </h2>
+          
+          <p class="lead">Accede a la sección de 
+            <span class="fst-italic text-muted">cultura</span>
+            , para descubrir características especiales de los países que 
+            existen en el mundo. ¿Quieres conocer la capital de algún país?, 
+            ¿Quieres conocer que idioma hablan? Desde 
+            <span class="fst-italic text-muted">cultura</span> 
+            podrás resolver todas tus dudas. 
+            Si quieres conocer información general podrás hacerlo desde 
+            <a href="./cultura/paises.html" class="shadow-link">cultura general</a>
+            <span class="fw-bold">. Y ¿Por qué no hacer que tus hijos estudien 
+                con esta opción?</span> 
+            Aprender puede ser divertido con: un mapa de 
+            <a href="./cultura/poblacion.html" class="shadow-link">población</a>
+            , un mapa de 
+            <a href="./cultura/emisiones.html" class="shadow-link">emisiones</a>
+             mundiales o con un mapa del 
+            <a href="./cultura/pib.html" class="shadow-link">producto interior bruto</a>
+            de cada país 
+            <span class="fst-italic">¡¡Todos interactivos!!</span>
+          </p>
+        </div>
+        <div class="col-md-5 text-center">
+          <!-- <img src="../recursos/img/cultura.gif" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="600" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Cómo utilizar "cultura"</title><rect width="100%" height="100%" fill="#eee"/></img> -->
+          <img src="../recursos/img/cultura.gif" class="featurette-image img-fluid mx-auto mt-5" width="350" height="350" role="img" />
+        </div>
+      </div><!--Featurette3-->
+
+      
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featuarette-heading">Necesitas 
+            <span class="fst-italic text-muted">registrarte</span> 
+            para disfrutar de toda la funcionalidad de <b>Mis Viajes Web</b>
+          </h2>
+          
+          <p class="lead">Para disfrutar de todas las características de la web 
+            necesitas estar registrado. Registrarse es sencillo, simplemente 
+            tienes que entrar en la página de 
+            <a href="registro.html" class="shadow-link">registro</a> 
+            y rellenar los campos de usuario y password; se requerirá confirmar 
+            el password para que no haya un error en su introducción. Si eres 
+            un despistado y se te olvida rellenar algún campo, no te preocupes, 
+            <span class="fst-italic text-muted">nosotros te lo recordamos</span>
+          </p>
+          
+          <p class="lead">Cuando te registres, la web te reconocerá 
+            automáticamente como un usuario registrado y podrás usar tanto 
+            <a href="mapa.html" class="shadow-link">mapa</a> 
+            como <a href="destino.html" class="shadow-link">destino</a>.
+          </p>
+          
+          <p class="lead">Cuando vuelvas otro día no tendrás que registrarte de 
+            nuevo, sino hacer 
+            <span class="fst-italic text-muted">log in</span> 
+            para ello tendrás que introducir tu usuario y tu contraseña en 
+            <a href="login.html" class="shadow-link">entrar</a> 
+            en cualquiera de todos los enlaces distribuidos en la web para 
+            facilitarte la entrada. Si se te olvida algún campo, nosotros te 
+            lo recordamos, como en 
+            <span class="fst-italic text-muted">registro</span>
+            . Si introduces mal la contraseña, te avisaremos para que lo 
+            soluciones.
+          </p>
+          
+          
+          <p class="lead">Cuando hagas 
+            <span class="fst-italic text-muted">log in</span> 
+            serás reconducido a la 
+            <a href="../index.html" class="shadow-link">página de inicio</a> 
+            y podrás ver en la parte superior derecha un mensaje con tu nombre 
+            de usuario del cual saldrán dos opciones desplegables, la primera es 
+            el área personal en el que podrás 
+            <span class="fw-bold">cerrar tu sesión</span>,
+            <span class="fw-bold">cambiar la contraseña</span>,
+            <span class="fw-bold">borrar tu cuenta</span>. 
+            Desde cualquier parte del sitio podrás cerrar la sesión con la segunda 
+            opción desplegable. 
+            <span class="fst-italic">Sencillo</span>
+            <span class="fw-bold">¿No?</span>
+          </p>
+          
+          <p class="lead">Estamos seguros que nunca pasará pero, si llegara el 
+            día que quieres dejar de utilizar 
+            <span class="fw-bold text-muted">Mis Viajes </span> 
+            podrás dar de baja a tu usuario de una manera sencilla. Simplemente, 
+            deberás pulsar el enlace 
+            <span class="fst-italic text-muted">borrar usuario</span> 
+            en la página 
+            <a href="login.html" class="shadow-link">área personal</a> 
+            (debes tener una sesión iniciada). Se borrarán todos los datos que 
+            tengamos de ti y te desconectaremos la sesión. 
+            <span class="fw-bold">Te echaremos mucho de menos</span>
+          </p>
+        </div>
+        <div class="col-md-5 order-md-1 text-center">
+          <!-- <img src="../recursos/img/login.gif" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Cómo utilizar "destino"</title><rect width="100%" height="100%" fill="#eee"/></img> -->
+          <img src="../recursos/img/login.gif" class="featurette-image img-fluid mx-auto mt-5" width="350" height="350" role="img"/>
+        </div>
+      </div><!--Featurette 4-->
+    </main>
+    
+    <hr class="featurette-divider">
+    <!-- Footer -->
+    <footer class="container">
+      <p class="float-end">
+        <a href="#" class="shadow-link">Back to top</a>
+      </p>
+      <p>&copy; 2021 Alejandro Calvo, Inc. &middot; 
+        <a id="privacy" class="shadow-link">Privacy</a> 
+        &middot; 
+        <a id="terms" class="shadow-link">Terms</a>
+      </p>
+    </footer>
+
+    <!-- Si existe una sesión no nos interesa que se logue en "loginOut" sino que aparezca reconocido -->
+    
+    <script>
+      setLogInOut_introduccion_HTML(document.getElementById('logInOut'));
+        
+      const PRIVACY = document.getElementById('privacy');
+      const MODAL_PRIVACY = document.getElementById('modal_container_privacy');
+      
+      PRIVACY.addEventListener('click',function(){
+        MODAL_PRIVACY.classList.add('show');
+      });
+        
+      const TERMS = document.getElementById('terms');
+      const MODAL_TERMS = document.getElementById('modal_container_terms');
+      TERMS.addEventListener('click',function(){
+        MODAL_TERMS.classList.add('show');
+      });
+        
+      //listener cerrar mabos modales
+      document.querySelectorAll('.closeModal').forEach(c => {
+        c.addEventListener('click',function(){
+          MODAL_PRIVACY.classList.remove('show');
+          MODAL_TERMS.classList.remove('show');
+        });
+      });
+    </script>
+    
+    <!-- Bootstrap JS -->
+    <script src="../recursos/libs/bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+    
+  </body>
+</html>

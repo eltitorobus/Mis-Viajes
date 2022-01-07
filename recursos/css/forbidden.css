@@ -1,0 +1,42 @@
+/*Si hay un intento de acceso prohibido, se da un estilo a la web forbidden*/
+  /* Que no haya barra de scroll, que lo sacaba por el marco del mapa*/
+  .noScroll{
+    overflow-y: hidden;
+  }
+  
+  /* Fondo de la página */
+  body{
+    background: rgba(0, 0, 0, .1);
+  }
+  
+  /* Contenedor a mostrar */
+  .recuadro {
+    background: rgba(0, 0, 0, .15);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    color: white;
+  }
+  
+  /* Estilo del texto que se muestra */
+  .noScroll h1{
+    font-weight: bold;
+  }
+  
+  .shadow-link{
+    color: #444B5F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    font-weight: bolder;
+    text-shadow: 0.1em 0.1em 0.6em #222A3F;
+  }
+  .shadow-link:hover{
+    color: #222A3F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  
+  

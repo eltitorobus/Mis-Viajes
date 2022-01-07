@@ -1,0 +1,189 @@
+/* 
+    Created on : 14 nov 2021, 13:46:20
+    Author     : Alejandro Calvo Toribio
+
+        -> Estilo para las ventanas modales que acceden a la BBDD
+        -> Hay dos ventanas que tienen el mismo estilo
+            -> Contenedor (.modal-container) que da un fondo oscuro para resaltar el modal
+                -> Show -> muestra el modal (se añade en el click, se elimina al cerrar)
+            -> Contenedor (.modal) que establece el estilo del diálogo
+*/
+
+/* Estilo del modal */
+.modal-container{
+    /*Dar un color oscuro al fondo para que resalte el modal*/
+    background-color: rgba(0,0,0,0.8);
+    position:fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    /* Fuente */
+    font-family: Arial, Helvetica, sans-serif;
+
+    /*Ocupa todo, no se podría hacer click*/
+    pointer-events: none;
+    
+    /*Lo ocultamos hasta que se haga click*/
+    opacity: 0;
+    
+    /*Centrar el modal*/
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Pequeña transición para aparecer y desaparecer */
+    transition: opacity 0.5s ease;
+    -webkit-transition: opacity 0.5s ease-in;
+    -moz-transition: opacity 0.5s ease-in;
+    
+    /* Para que no me oculte el modal*/ /* Parace que la última de LEAFLET ocupa 399 en z-index*/
+        /* Si no se ve el modal, poner más z-index*/
+    z-index: 999999999999999;
+}
+/* Clase que va a mostrar el modal */
+.modal-container.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalPersonalizado{
+    /* Degradado de fondo */
+    background-color: #FFFFFF;
+    background: -moz-linear-gradient(#FFFFFF, #777777);
+	background: -webkit-linear-gradient(#FFFFFF, #777777);
+	background: -o-linear-gradient(#FFFFFF, #777777);
+
+    /* Esquinas redondeadas */
+    /*border-radius: 10px 2px 4px rgba(0,0,0,0.3);*/
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+
+    /* Borde y sombra*/
+    border: none;
+    box-shadow: 10px 2px 4px rgba(0,0,0,0.2);
+
+    /* Situación y alineación*/
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 5% 2%;
+
+    padding: 5px 10px 15px 10px;
+
+    /* Efecto de transición*/
+    transition: opacity 0.5s ease;
+    -webkit-transition: opacity 0.5s ease-in;
+	-moz-transition: opacity 0.5s ease-in;
+
+    /* Alineación (Para la X de cerrar)*/
+    text-align: right;
+}
+
+.modalPersonalizado h1{
+    /* Para que la pregunta no me cree un modal muy grande*/
+    margin-top: 5px;
+    
+    /* Estilo del texto*/
+    font-size: 1.5em;
+    color: #222A3F;
+}
+
+/* Botón para cerrar el modal */
+.closeModal {
+    /* Le doy un fondo rojo y letra blanca propio de cerrar y su estilo*/
+	background-color: #FF0000;
+	color: #FFFFFF;
+
+    text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+    font-size: 1.5em;
+
+    /* Le doy un tamaño fijo y un redondeado fijo para que parezca un círculo*/
+	width: 24px;
+    line-height: 25px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+
+    /* Lo sitúo en una posición fija, en la esquina superior derecha del modal*/
+	position: absolute;
+	right: -12px;
+	top: -10px;
+	
+    /* Sombreado */
+    box-shadow: 3px #000000;
+	-webkit-box-shadow: 3px #000000;
+	-moz-box-shadow: 3px #000000;
+}
+/* Darle animación */
+.closeModal:hover { 
+    background: #FF0000;
+    color: #000000;
+    text-decoration: none;
+}
+
+/* Estilo de los botones para insertar o borrar de la BBDD*/
+    /* Es el mismo que en el resto de la web*/
+button {
+    background: #222A3F;
+    color: #F1F1F1;
+    font-weight:bold;
+
+    /* Sin borde y aumentar el tamaño*/
+    border: none;
+    padding: 5px;
+
+    /* Sombra y su transición para que no sea tan agresiva*/
+    box-shadow: 0 0 30px rgba(34, 42, 63, 0.3);
+    -webkit-box-shadow: 0 0 30px rgba(34, 42, 63, 0.3);
+	-moz-box-shadow: 0 0 30px rgba(34, 42, 63, 0.3);
+    transition: 0.5s ease-in;
+    /*-webkit-transition: opacity 0.5s ease-in;
+	-moz-transition: opacity 0.5s ease-in;*/
+
+    /* Redondez */
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+button:hover{
+    background: #444B5F;
+    color: #222A3F;
+    box-shadow: 0 0 30px rgba(34, 42, 63, 1);
+
+    /* Redondez */
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+/* Modal del index */
+#contenidoModalIndex h1{
+    text-align: center;
+    color:#222A3F;
+    
+    
+    font-size: calc(1.5rem + .9vw);
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+#contenidoModalIndex h2{
+    text-align: center;
+    color:#444B5F;
+    font-size: large;
+}
+
+#contenidoModalIndex p{
+    text-align: justify!important;
+}
+
+#contenidoModalIndex a{
+    text-shadow: 0.1em 0.1em 0.4em white
+}

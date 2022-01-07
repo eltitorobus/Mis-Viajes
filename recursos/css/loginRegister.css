@@ -1,0 +1,129 @@
+body{
+    background: rgba(0, 0, 0, .1);
+}
+.formulario {
+    background: rgba(0, 0, 0, .15);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    color: white;
+}
+
+.formulario .imagen{
+    width: 20px;
+    height: 20px;
+}
+
+.form-control {
+    background: rgba(0, 0, 0, .4);
+    border-style: none;
+    transition: 0.5s ease-in;
+    outline: none;
+    box-shadow: none;
+
+    /* Todos los elementos de tipo imput están redondeados*/
+    border-radius: 12px;
+    moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+}
+
+.form-control:focus {
+    background: rgba(0, 0, 0, 0.8);
+
+    color:#F1F1F1;
+
+    box-shadow: none;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #222A3F;
+    font-weight:bold;
+}
+
+.btn {
+    background: #222A3F;
+    color: #F1F1F1;
+    font-size: 16px;
+    font-weight: 700!important;
+
+    padding: 10px;
+
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    transition: 0.5s ease-in;
+}
+
+.btn:hover{
+    background: #444B5F;
+    color: #222A3F;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+}
+
+.shadow-link {
+    color: #444B5F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    text-shadow: 0.1em 0.1em 0.6em #222A3F;
+}
+
+.shadow-link:hover {
+    color: #222A3F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.registro {
+    background: #444B5F;
+    color: #F1F1F1;
+
+    text-decoration-style: none;
+    text-decoration-line: none;
+    font-size:medium;
+    font-weight: 700 !important;
+    
+    /* border: 2px solid white; */
+    padding: 10px;
+    border-radius: 10px;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.568);
+    transition: 0.5s ease-in;    
+}
+
+.registro:hover {
+    background: #444B5F;
+    color: #222A3F;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+    
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+}
+
+/* Parte del nav para hacer log in o log out --> Un poco más de color para distinguirlo del resto del NAV*/
+#logInOut{
+    color:rgba(255,255,255,0.85);
+}
+
+#logInOut:hover{
+    color: rgba(255,255,255);
+}
+
+/* Botón para borrar usuario oculto hasta que se exista un usuario loggeado */
+.oculto{
+    display:none; /* Para que no reserve el sitio Vs Opacity */
+}
+
+/* Dropdown color común a todas las páginas */
+/* NAVBAR */
+
+  /* Sobrescribir las clases de dropwdown porque hace un focus que pierde el estilo dark */
+
+.dropdown-item{
+    color: rgba(255,255,255,.55);
+}
+
+.dropdown-item:hover{
+    color: rgba(255,255,255,.75);
+}

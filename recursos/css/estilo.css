@@ -1,0 +1,162 @@
+/* Color de fondo de todo el sitio web*/
+body{
+    background-color: rgba(0, 0, 0, .1);
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+
+  /* Sobrescribir las clases de dropwdown porque hace un focus que pierde 
+    el estilo dark */
+
+.dropdown-item{
+    color: rgba(255,255,255,.55);
+}
+
+.dropdown-item:hover{
+    color: rgba(255,255,255,.75);
+}
+
+  /* Parte del nav para hacer log in o log out --> Un poco más de color para 
+    distinguirlo del resto del NAV*/
+#logInOut{
+    color:rgba(255,255,255,0.85);
+}
+
+#logInOut:hover{
+    color: rgba(255,255,255);
+}
+
+
+/* MAIN */
+    /* Prevenir scroll en el main --> Pudieran provocarlo las imágenes */
+main{
+    overflow-x: hidden;
+}
+
+
+/* Estilo de forma general */
+
+h1{
+    text-align: center;
+    color:#222A3F;
+}
+
+h2{
+    text-align: center;
+    color:#444B5F;
+}
+
+/* Para dar animación a las imágenes sobre las que se hace hover 
+    En la fase de pruebas la gente decía que le hacía pensar que eran enlaces
+img:hover {
+    opacity: 0.7;
+}
+*/
+
+/* Es para todos los links (a) del documento salvo el NAV. No se usa "a" porque 
+    si se pone en general --> Afecta al Navbar
+    si se pone body --> Afecta al Navbar
+    si se pone en main --> No afecta a los del footter
+*/
+.shadow-link{
+    color: #444B5F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    font-weight: bolder;
+    text-shadow: 0.1em 0.1em 0.6em #222A3F;
+}
+.shadow-link:hover{
+    color: #222A3F;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Para todos los "botones" de la web se sobrescribe la clase de Boostrap para dar un estilo acorde a la web */
+.btn {
+    background: #222A3F;
+    color: #F1F1F1;
+    font-size: 16px;
+    font-weight: 700!important;
+
+    padding: 10px;
+
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    transition: 0.5s ease-in;
+    
+    /* Le anulo el fondo de texto blanco que hereda del caption para que se lea bien*/
+    text-shadow: 0 0 0 #222A3F;
+}
+
+.btn:hover{
+    background: #444B5F;
+    color: #222A3F;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+}
+
+.btnDropDown{ /*Idéntico a button pero más simplificado y sin animación */
+    background: #222A3F;
+    color: #F1F1F1;
+    font-size: 16px;
+    font-weight: 700!important;
+}
+
+
+
+
+/* Estilo específico de index */
+
+/* Titulo del carusel */
+carousel-caption, h1{
+    text-shadow: 0.1em 0.1em 0.2em #FFF;
+    font-weight: bold;
+}
+
+/* Subtitulo del carousel*/
+.subtitulo{
+    color:#FFF;
+    font-weight: bold;
+    text-indent: 0px m !important;
+    
+    text-shadow: 0.1em 0.1em 0.2em #000;
+}
+
+/* Dos clases para que el carrusel se adapte bien a la pantalla y al NAV */
+.slide{
+    margin-top: 10px;
+}
+
+.slide img{
+    margin: auto;
+    margin-top: 55px; /* Para que no oculte la parte superior del carrusel el 
+                      nav al estar fixed-top. mt-5 no era suficiente */
+    height: 75vh;
+    width: 100%;
+}
+
+/* Las imágenes no tienen 100% de saturación para provocar una mejor lectura */
+.carousel-item img{
+    opacity: 0.62;
+}
+
+/* Para que se vea bien el texto en el caroulsel le doy un fondo translúcido*/
+.carousel-caption{
+    /* Sombreado para que se lea mejor, negro*/
+    background-color: rgba(68, 91, 95, .50);
+
+    border-radius: 12px;
+    moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+}
+
+/* Donde aparece texto en index e introducción --> Justificado y con margen */
+.lead{
+    text-indent: 2em;
+}
+
+/* Se crea con la sintaxis de bootstrap porque boostrap 3 lo tenía y lo quitaron */
+.text-justify{
+    text-align: justify;
+}

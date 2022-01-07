@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!--
+    Created on : 13 diciembre 2021, 14:58:13
+    Author     : Alejandro Calvo Toribio
+    
+    destino     -> Página de búsqueda de destino
+                -> Powered by BootStrap 5
+  -->
+
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Alejandro Calvo">
+  <meta name="description" content="Web de Destino de Mis Viajes">
+  <title>✈ Elige tu próximo destino ✈</title>
+
+  <!-- CSS -->
+    <!-- Bootstrap 5 CSS -->
+  <link href="../recursos/libs/bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mis CSS -->
+  <link href="../recursos/css/destino.css" rel="stylesheet">
+  <link href="../recursos/css/modal.css" rel="stylesheet">
+
+  <!-- JS -->
+    <!-- JQuery -->
+  <script src="../recursos/libs/js/jquery.js" crossorigin="anonymous"></script> 
+    <!-- js: comportamiento "Entrar" del nav -->
+  <script src="../recursos/js/loginLogout.js" crossorigin="anonymous"></script> 
+    <!-- JS para la función de actualizar el país a deseado -->
+  <script src="../recursos/js/funcionesDestino.js"></script>
+  
+</head>
+<body>
+    
+  <script>
+    if(!sessionStorage.getItem('nombre')){
+      window.location.href= "./unauthorized.html";
+    }
+  </script>
+  
+  <header>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <!--Contenedor de los elementos de la navegación-->
+      <div class="container-fluid">
+        <!--Elemento principal de la web-->
+        <a class="navbar-brand" href="../index.html"> <!--Aquí "sube" en otras "/"-> Ve a la raíz-->
+          <img src="../recursos/img/logoWeb.png" alt="Logo Web" width="30" height="24" class="d-inline-block align-text-top"> Mis Viajes
+        </a>
+        <!--Botón hamburguesa que se va a mostrar en móviles-->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menuNavLogin" aria-controls="menuNavLogin" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span><!--Icono automático-->
+        </button>
+
+        <!--Contenido al que hace referencia al botón pero que conlas clases de BS aparecerá automáticamente si es más que móvil-->
+        <div id="menuNavLogin" class="collapse navbar-collapse">
+          <!--Lista con todos los elementos de la Web (login a la derecha, separado en teléfonos)-->
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="introduccion.html">Introducción</a></li>
+            <li class="nav-item"><a class="nav-link" href="mapa.html">Mapa</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#">Destino</a></li>
+              
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Cultura</a>
+              <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown03">
+                <li><a class="dropdown-item bg-dark" href="./cultura/paises.html">General</a></li>
+                <li><a class="dropdown-item bg-dark" href="./cultura/poblacion.html">Mapa Población</a></li>
+                <li><a class="dropdown-item bg-dark" href="./cultura/emisiones.html">Mapa Emisiones CO2</a></li>
+                <li><a class="dropdown-item bg-dark" href="./cultura/pib.html">Mapa PIB</a></li>
+                  <!-- Aunque parezca reiterativo el bg-dark es para sobrescribir el focus del dropdown-item -->
+              </ul>
+            </li>
+              
+          </ul>
+         
+          <div class="d-flex">
+            <a id="logOut" class="nav-link" href="../index.html">Entrar</a>
+          </div>       
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+      
+    <!-- MODAL confirmar-->
+    <div id="modal_container" class="modal-container">
+      <div class="modalPersonalizado">
+        <a id="cerrarModal" class="closeModal" href="#">&times;</a>
+        <div id="contenidoModal" class="text-center">
+                
+          <h1 id="tituloModal"></h1>
+          <!-- <span><img src="" id="bandera" width="25px" height="25px"/></span> -->
+                
+          <button id="btn_aceptar"  value=1>Aceptar</button>
+          <button id="btn_cancelar" value=2>Cancelar</button>
+        </div>
+      </div>
+    </div>
+          
+    <div class="container destino">
+      <div class="row"> <!-- Todo -->
+        <div class="col-md-3 destino-left"> <!-- Parte bonita de la izquierda -->
+          <img src="../recursos/img/avion.gif" alt="" class="text-center"/>
+            <!-- https://www.gifsanimados.org/data/media/71/avion-imagen-animada-0052.gif -->
+            <!-- https://www.gifsanimados.org/data/media/71/avion-imagen-animada-0007.gif -->
+          <h3>Destino</h3>
+          <p>¡¡Estás a 30 segundos de conocer tu futuro destino!!</p>
+          <!-- input type="submit" name="" value="Login"/><br/ -->
+        </div>
+        <div class="col-md-9 destino-right"> <!-- Formulario en sí -->
+          <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist"> <!-- Botones superiores derechos -->
+            <li class="nav-item">
+              <button class="nav-link active" id="nuevo" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">Nuevo</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="repito" data-toggle="tab" href="#" role="tab" aria-controls="profile" aria-selected="false">Repito</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent"> <!-- Todo el formulario inferior -->
+            <h3 class="destino-heading">¿A dónde quieres ir?</h3> <!-- Título -->
+            <form action="#" method="post">
+              <div class="row destino-form"> <!-- Formulario sin título -->
+                <div class="col-md-6">
+                  <div class="form-group"> <!-- Hemisferio -->
+                    <label for="hemisferio">Hemisferio</label>
+                    <div class="maxl">
+                      <label for="hemisferio" class="radio inline" id="hemisferio">
+                        <input type="radio" name="hemisferio" value="norte" id="hNorte">
+                        <span> Norte </span> 
+                      </label>
+                      <label class="radio inline"> 
+                        <input type="radio" name="hemisferio" value="sur" id="hSur">
+                        <span>Sur </span>
+                      </label>
+                      <label class="radio inline"> 
+                        <input type="radio" name="hemisferio" value="indiferente" id="hNo" checked>
+                        <span>Indiferente </span>
+                      </label>
+                    </div>
+                  </div>
+                    
+                  <div class="form-group"> <!-- Continente, oculto por defecto -->
+                    <label for="continente">Continente</label>
+                    <input type="radio" name="continente" id="continenteOcultarNo" value="No" checked>
+                    <label>No </label>
+                    <input type="radio" name="continente" id="continenteOcultarSi" value="Si">
+                    <label>Si </label>
+                    
+                    <select id="selectContinente" class="w-100 form-control oculto">
+                      <option selected>Europa</option>
+                      <option>África</option>
+                      <option>América</option>
+                      <option>Asia</option>
+                      <option>Oceanía</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group"> <!-- Idioma, oculto por defecto -->
+                    <label for="idioma">Idioma</label>
+                    <input type="radio" name="idioma" id="idiomaOcultarNo" value="No" checked>
+                    <label>No </label>
+                    <input type="radio" name="idioma" id="idiomaOcultarSi" value="Si">
+                    <label>Si </label>
+                    
+                    <select id="selectIdioma" class="w-100 form-control oculto">
+                      <option selected>Español</option>
+                      <option>Albanés</option>
+                      <option>Alemán</option>
+                      <option>Amárico</option>
+                      <option>Árabe</option>
+                      <option>Armenio</option>
+                      <option>Azerí</option>
+                      <option>Bengalí</option>
+                      <option>Birmano</option>
+                      <option>Búlgaro</option>
+                      <option>Checo</option>
+                      <option>Chino</option>
+                      <option>Cingalés</option>
+                      <option>Coreano</option>
+                      <option>Croata</option>
+                      <option>Danés</option>
+                      <option>Darí</option>
+                      <option>Dzongkha</option>
+                      <option>Eslovaco</option>
+                      <option>Esloveno</option>
+                      <option>Estonio</option>
+                      <option>Francés</option>
+                      <option>Georgiano</option>
+                      <option>Griego</option>
+                      <option>Hebreo</option>
+                      <option>Húngaro</option>
+                      <option>Indonesio</option>
+                      <option>Inglés</option>
+                      <option>Islandés</option>
+                      <option>Italiano</option>
+                      <option>Japonés</option>
+                      <option>Lao</option>
+                      <option>Latín</option>
+                      <option>Letón</option>
+                      <option>Lituano</option>
+                      <option>Malayo</option>
+                      <option>Maldivo</option>
+                      <option>Mongol</option>
+                      <option>Montenegrino</option>
+                      <option>Neerlandés</option>
+                      <option>Nepalí</option>
+                      <option>Noruego</option>
+                      <option>Persa</option>
+                      <option>Polaco</option>
+                      <option>Portugués</option>
+                      <option>Rumano</option>
+                      <option>Ruso</option>
+                      <option>Serbio</option>
+                      <option>Somalí</option>
+                      <option>Suajili</option>
+                      <option>Sueco</option>
+                      <option>Tailandés</option>
+                      <option>Tayiko</option>
+                      <option>Ucraniano</option>
+                      <option>Vietnamita</option>
+                    </select>
+                  </div>
+                    
+                  <div class="form-group">
+                    <label for="covid">Covid</label>
+                    <input type="radio" name="covid" id="covidOcultarNo" value="No" checked>
+                    <label>No </label>
+                    <input type="radio" name="covid" id="covidOcultarSi" value="Si">
+                    <label>Si </label>
+                  
+                    <select id="selectCovid" class="form-control oculto w-100">
+                      <option value="0">Indiferente</option>
+                      <option value="1">Pasaporte Covid</option>
+                      <option value="2">Cuarentena obligatoria</option>
+                      <option value="3">Prohibición de viajar</option>
+                      <option value="4">Sin restricciones</option>
+                    </select>
+                  </div>
+                </div> <!-- Fin parte izquierda de la parte derecha-->
+                
+                <!-- Parte de la derecha -->
+                <div class="col-md-6"> <!-- Todos los checkboxs -->
+                  
+                    <div class="text-center">
+                       <label for="caracteristicas">Características</label>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="playa" value="playa"> Playa
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="montaña" value="montaña"> Montaña
+                      </div>
+
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="cultural" value="cultural"> Cultural
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="safari" value="safari"> Safari
+                      </div>
+
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="exotico" value="exotico"> Exótico
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="ong" value="ong"> ONG
+                      </div>
+
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="peligroso" value="peligroso"> Peligroso
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" id="turistico" value="turistico"> Turístico
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="resultado" class="bg-primary text-light text-center">¿Cuál será tu destino?</div>
+                  <div class="text-center"><input type="button" class="btn_buscar"  value="Buscar" id="buscar"/></div>
+
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+   
+  <script>
+    /* Inicialización de la funcionalidad. La web reacciona al usuario. 
+     *   el usuario puede elegir si filtrar o no por continente, idioma y COVID
+     *   si acepta se le mostrará un "select" con las opciones, sino no.
+     *   También puede decidir si quiere filtrar por países en los que ya ha 
+     *   estado o que sean nuevos --> ToggleButton.
+     *   
+     * La web reacciona a todo ello por lo que hay referencia a los objetos
+     *   y se les añade un listener con una función o función anónima
+     */
+    
+    
+    //1) Inicialización de la funcionalidad del ToggleButton
+    //1.1)Declaración de los elementos afectados
+    
+    const NUEVO  = document.getElementById('nuevo');
+    const REPITO = document.getElementById('repito');
+    
+    //1.2) Función que se le añadirá al listener (click) (funcionesDestino.js)
+    
+    
+    //1.3) Creación de la variable de la función previa y registro del listener para ambos botones
+    let newOrNot = null;
+    NUEVO.addEventListener('click', changeToggleButton);
+    REPITO.addEventListener('click', changeToggleButton);
+
+
+
+    //2 Funcionalidad de los "Selects" (Continente, idioma y covid)
+
+    
+    //Referencia a los radio (true y false) y al select (oculto en principio) --> Continente
+    const SELECT_CONTINENTE = document.getElementById('selectContinente');
+    const RADIO_CONTINENTE_TRUE = document.getElementById('continenteOcultarSi');
+    const RADIO_CONTINENTE_FALSE = document.getElementById('continenteOcultarNo');
+
+    // Si se pulsa TRUE en el Radio --> Se debe ver el select de selección, sino no
+    RADIO_CONTINENTE_TRUE.addEventListener('click', function(){
+      SELECT_CONTINENTE.classList.remove('oculto');
+    });
+    // Si se vuelve a pulsar (o no se ha pulsado) el FALSE en el RADIO --> No se ve el select
+    RADIO_CONTINENTE_FALSE.addEventListener('click', function(){
+      SELECT_CONTINENTE.classList.add('oculto');
+    });
+
+    /*
+     * Misma funcionalidad con el select "idioma"
+     */
+    
+    //Referencia a los radio (true y false) y al select (oculto en principio) --> Idioma
+    const SELECT_IDIOMA = document.getElementById('selectIdioma');
+    const RADIO_IDIOMA_TRUE = document.getElementById('idiomaOcultarSi');
+    const RADIO_IDIOMA_FALSE = document.getElementById('idiomaOcultarNo');
+    
+    // Si se pulsa TRUE en el Radio --> Se debe ver el select de selección, sino no
+    RADIO_IDIOMA_TRUE.addEventListener('click', function(){
+      SELECT_IDIOMA.classList.remove('oculto');
+    });
+    // Si se vuelve a pulsar (o no se ha pulsado) el FALSE en el RADIO --> No se ve el select
+    RADIO_IDIOMA_FALSE.addEventListener('click', function(){
+      SELECT_IDIOMA.classList.add('oculto');
+    });
+    
+    /*
+     * Misma funcionalidad con el select "COVID"
+     */
+    //Referencia a los radio (true y false) y al select (oculto en principio) --> COVID
+    const SELECT_COVID = document.getElementById('selectCovid');
+    const RADIO_COVID_TRUE = document.getElementById('covidOcultarSi');
+    const RADIO_COVID_FALSE = document.getElementById('covidOcultarNo');
+    // Si se pulsa TRUE en el Radio --> Se debe ver el select de selección, sino no
+    RADIO_COVID_TRUE.addEventListener('click', function(){
+      SELECT_COVID.classList.remove('oculto');
+    });
+    // Si se vuelve a pulsar (o no se ha pulsado) el FALSE en el RADIO --> No se ve el select
+    RADIO_COVID_FALSE.addEventListener('click', function(){
+      SELECT_COVID.classList.add('oculto');
+    });
+
+
+    //3) Funcionalidad del botón "buscar" y del "div" donde se verá el resultado
+    
+    //3.1) Declaración de variables
+    const BUSCAR = document.getElementById('buscar');
+    const RESULTADO  = document.getElementById('resultado');
+    
+    //3.2) Añadir el listener al botón 
+    BUSCAR.addEventListener('click',buscarListener);
+  </script>
+
+    
+  <!-- En Destino sólo puede haber usuarios loggeados -->
+  <script>
+      window.onload = setLogInOut_destino_HTML(document.getElementById('logOut'));
+  </script>
+    
+  <!-- Bootstrap JS -->
+  <script src="../recursos/libs/bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

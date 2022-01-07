@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<!--
+    Created on : 1 diciembre 2021, 16:30:25
+    Author     : Alejandro Calvo Toribio
+    
+    login       -> Página de login de la aplicación Mis Viajes
+                -> Powered by BootStrap 4 & 5
+                  -> Creado a partir del example signin y de los Components de Get Started
+-->
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Alejandro Calvo">
+  <meta name="description" content="Web de Login de Mis Viajes">
+  <title>Entrar en el sitio</title>
+
+  <!-- CSS -->
+    <!-- Bootstrap 4 CSS -->
+  <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../recursos/libs/bootstrap/assets/dist/css/bootstrap4.min.css">
+    <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="../recursos/libs/bootstrap/assets/dist/css/bootstrap.min.css">
+    <!-- Mis CSS -->
+  <link rel="stylesheet" href="../recursos/css/loginRegister.css">
+  
+  <!-- JS -->
+    <!-- JQuery para AJAX -->
+    <script src="../recursos/libs/js/jquery.js" crossorigin="anonymous"></script>
+    <!-- JS: comportamiento "Entrar" del nav -->
+    <script src="../recursos/js/loginLogout.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <header>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <!--Contenedor de los elementos de la navegación-->
+      <div class="container-fluid">
+        <!--Elemento principal de la web-->
+        <a class="navbar-brand" href="../index.html"> <!--Aquí "sube" en otras "/"-> Ve a la raíz-->
+          <img src="../recursos/img/logoWeb.png" alt="Logo Web" width="30" height="24" class="d-inline-block align-text-top"> Mis Viajes
+        </a>
+        <!--Botón hamburguesa que se va a mostrar en móviles-->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menuNavLogin" aria-controls="menuNavLogin" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span><!--Icono automático-->
+        </button>
+
+        <!--Contenido al que hace referencia al botón pero que conlas clases de BS aparecerá automáticamente si es más que móvil-->
+        <div id="menuNavLogin" class="collapse navbar-collapse">
+          <!--Lista con todos los elementos de la Web (login a la derecha, separado en teléfonos)-->
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="./introduccion.html">Introducción</a></li>
+              <li class="nav-item"><a class="nav-link" href="./mapa.html">Mapa</a></li>
+              <li class="nav-item"><a class="nav-link" href="./destino.html">Destino</a></li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Cultura</a>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown03">
+                    <li><a class="dropdown-item bg-dark" href="./cultura/paises.html">General</a></li>
+                    <li><a class="dropdown-item bg-dark" href="./cultura/poblacion.html">Mapa Población</a></li>
+                    <li><a class="dropdown-item bg-dark" href="./cultura/emisiones.html">Mapa Emisiones CO2</a></li>
+                    <li><a class="dropdown-item bg-dark" href="./cultura/pib.html">Mapa PIB</a></li>
+                        <!-- Aunque parezca reiterativo el bg-dark es para sobrescribir el focus del dropdown-item -->
+                </ul>
+              </li>
+              
+            </ul>
+              <a id="logInOut" class="nav-link" href="#">Entrar</a>     
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container pt-4">
+      <div class="row justify-content-center pt-2 mt-5 m-1">
+        <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario mb-4">
+          <form action="#" method="post">
+            <div class="form-group text-center pt-3">
+              <img src="../recursos/img/logoWeb.png" alt="login" class="mb-4">
+              <h1 class="text-dark" id="titulo">INICIAR SESIÓN</h1>
+            </div>
+            
+            <div class="row">
+              <span class="mb-2 text-center" id="mensaje"></span>
+            </div>
+              
+            <div class="form-group mx-sm-4 pt-3" id="divInputUsuario">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../recursos/img/luser.png" alt="User" class="imagen">
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" placeholder="Usuario" name="nombre" id="inputUser" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mx-sm-4" id="divInputPass">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../recursos/img/lpass.png" alt="Pass" class="imagen">
+                </div>
+                <div class="col-10">
+                  <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="inputPass" required>
+                </div>
+              </div>
+            </div>
+            
+              
+            <!-- Oculto que sólo se verá si vas a cambiar el password -->
+            
+            <div class="form-group mx-sm-4 pb-3 oculto" id="divInputConfirmar">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../recursos/img/lpass.png" alt="Pass" class="imagen">
+                </div>
+                <div class="col-10">
+                  <input type="password" class="form-control" placeholder="Confirmar" name="confirmar" id="inputConfirmar" required>
+                </div>
+              </div>
+            </div>
+            
+            
+            
+            <!-- 3 Botones pero sólo se ve el que interesa al usuario -->
+            <div class="form-group mx-sm-4 pb-2" id="divLoginButton">
+                <input type="submit" class="btn btn-block acceder" value="ENTRAR" name="validar" id="loginButton">
+            </div>
+            <div class="form-group mx-sm-4 pb-2 oculto" id="divChangeButton">
+                <input type="submit" class="btn btn-block acceder" value="CAMBIAR" name="validar" id="changePassButton">
+            </div>
+            <div class="form-group mx-sm-4 pb-2 oculto" id="divDeleteButton">
+                <input type="submit" class="btn btn-block acceder" value="BORRAR" name="validar" id="delUserButton">
+            </div>
+            
+            
+            
+            <div class="form-group mx-sm-4 text-right oculto" id="loggeado">
+                <span>
+                    <a href="#" class="shadow-link" id="cerrar" title="Cerrar sesión">Cerrar Sesión</a>
+                    <br>
+                </span>
+                <span>
+                    <a href="#" class="shadow-link" id="cambiar" title="Escribe tu nombre de usuario y la nueva contraseña">Cambiar contraseña</a>
+                    <br>
+                </span>
+                <span>
+                    <a href="#" class="shadow-link" id="borrar" title="Eliminar usuario">Borrar usuario</a>
+                    <br>
+                </span>
+            </div>
+            <div class="form-group text-center">
+                <span><a href="../HTML/registro.html" class="registro">REGISTRO</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+  </main>
+    
+  <script>
+      /*
+       * Este script simplemente settea un listener para cada uno de los botones
+       * 
+       * Existen 3 botones: entrar, cambiar (pass) y borrar (usuario)
+       *    Por defecto sólo está activo entrar
+       *    Pero si el usuario ya ha entrado --> La pág. pasa a ser área personal
+       *        @See loginLogout.js --> El área personal siempre es manejado por ella
+       *        
+       *        Se muestran 3 links: "Cerrar sesión", "Cambiar"(pass) y Borrar
+       *        Si se pulsa cambiar o borrar --> Se muestra el botón acorde
+       *            **Esto se hace loginLogout.js
+       * 
+       * Si el usuario pulsa borrar --> Se muestra botón de confirmación
+       *    Si pulsa en el botón de confirmación -> Se borra (AJAX)
+       *    y se muestra un mensaje de confirmación, ocultando el resto
+       * 
+       * Si el usuario pulsa en cambiar --> Se muestran los imputs necesarios
+       *    (pass y confirmar) y el botón para cambiar
+       *    Si pulsa en cambiar -> Se cambia (AJAX) y se muestra un mensaje de
+       *    confirmación, ocultando el resto
+       * 
+       * Si el usuario pulsa entrar (por defecto) -> Se comprueba que el usuario
+       *    existe y se inicia una sesión, llevando al usuario al index.html
+       *    
+       * En cualquier momento el usuario puede introducir datos erróneos, por ello
+       *    existe "validarNombrePass" y "validarConfirmar" (que llamará a la 1ª
+       *    y, además, confirmará que el campo es igual que pass)
+       *    
+       *    Si suceden los errores controlados -> Mensaje de error acorde
+       *        ->Ningún campo vacío
+       *        ->Ningún campo superior a 16 carácteres
+       *        ->Nombre no puede tener carácteres especiales o ser sólo nºs
+       *        ->Confirmar tiene que ser igual que PASS
+       *        
+       *    Si sucede un error no controlado -> Mensaje de error sin controlar
+       */
+      
+    //Declaración de las variables
+    const MENSAJE  = document.getElementById('mensaje');
+      
+    const DIV_INPUT_USUARIO = document.getElementById('divInputUsuario');
+    const DIV_INPUT_PASS = document.getElementById('divInputPass');
+    const DIV_INPUT_CONFIRMAR = document.getElementById('divInputConfirmar');
+    
+    const NOMBRE   = document.getElementById('inputUser');
+    const PASS     = document.getElementById('inputPass');
+    const CONFIRMAR= document.getElementById('inputConfirmar');
+    
+    const ELEMENTOS_USER_LOGGEADO = document.getElementById('loggeado');
+    
+    const DIV_LOGIN_BUTTON = document.getElementById('divLoginButton');
+    const DIV_CHANGE_PASS_BUTTON = document.getElementById('divChangeButton');
+    const DIV_DEL_USER_BUTTON = document.getElementById('divDeleteButton');
+    
+    const LOGIN_BUTTON      = document.getElementById('loginButton');
+    const CHANGE_PASS_BUTTON= document.getElementById('changePassButton');
+    const DEL_USER_BUTTON   = document.getElementById('delUserButton');
+
+
+    /*
+    * 
+    * @param   {event} defaultEvent --> evento click
+    *          {input} input        --> input a validar
+    *          
+    * @returns {bool}               --> True (validado), false (error)
+    *                                   -->En el caso de error llama a setError y
+    *                                        le pone el foco al input
+    * 
+    * Valida el campo introducido atendiendo a las reglas expuestas arriba y 
+    *   devuelve true o false.
+    *   Si es false --> llama a setError con un mensaje adecuado y le pone el foco
+    *   al input que ha tenido el fallo
+    */
+    function validarNombrePass(defaultEvent, input){
+      if(input.value == "" || input.value == null || input.value == undefined){
+        setError(input.placeholder+" no puede estar vacío");
+        defaultEvent.preventDefault();
+        input.focus();
+        return false;
+      }
+        
+      if(input.value.length > 16){
+        setError(input.placeholder+" tiene que tener 16 carácteres como máximo");
+        defaultEvent.preventDefault();
+        input.focus();
+        return false;
+      }
+        
+      if(input === NOMBRE){ //Pass si puede ser numérico o tener carácteres especiales
+        if( Number.isInteger(parseInt(NOMBRE.value) ) //Si es todo número sin letras
+          || /[^A-Za-z\d]/.test(NOMBRE.value)){ //Lo mismo + carácteres especiales
+            setError("Nombre no puede ser un número o contener carácteres especiales");
+            defaultEvent.preventDefault();
+            input.focus();
+            return false;
+        }
+      }
+      
+      return true;
+    }
+    
+    /*
+    * 
+    * @param   {event} defaultEvent --> evento click
+    *          {input} input        --> input a validar
+    *          
+    * @returns {bool}               --> True (validado), false (error)
+    *                                   -->En el caso de error llama a setError y
+    *                                        le pone el foco al input
+    * 
+    * Valida el campo introducido (confirmar) atendiendo a las reglas expuestas
+    *   arriba (puesto que llama a la función previa) y, además, comprueba que
+    *   tenga el mismo valor que el input "pass"
+    * 
+    * Si hay error --> Llama a setError con un mensaje adecuado y le pone el foco
+    */
+    function validarConfirmar(defaultEvent, input){
+      if(validarNombrePass(defaultEvent, input)){ //Si hay error devuelve true, por eso se niega
+        if(input.value == PASS.value){ // Única opción de que vaya bien, no "", no > 16 y son iguales --> TRUE
+          return true;
+        }else{  // Valida bien pero no ha introducido la misma y se le indica
+          setError("Debe introducir la misma contraseña");
+          defaultEvent.preventDefault();
+          input.focus();
+        }
+      }
+    
+      return false;
+    }
+    
+    /*
+    * 
+    * @param   {string} mensaje --> Mensaje a establecer como error en el espacio
+    *                               reservado para ello
+    *          
+    * @returns {void}           --> No devuelve nada, settea el error con un 
+    *                               fondo propio de error
+    */
+    function setError(mensaje){
+      MENSAJE.classList.remove("alert-success");
+      MENSAJE.classList.add("alert-danger");
+      MENSAJE.innerHTML = mensaje;
+    }
+    
+    /*
+    * 
+    * @param   {event} defaultEvent --> evento click
+    *          
+    * @returns {void}               
+    * 
+    * Es la función asignada al evento click "entrar"
+    * 
+    * Siempre que se validen tanto el campo NOMBRE como el campo PASS (confirmar
+    *   no es necesario para entrar a la web) procede a hacer una llamada AJAX
+    *   a la BBDD mediante la API "Usuarios.php" para comprobar que el usuario existe
+    *   
+    * Si el usuario mete mal un dato --> JS en la función validarNombrePass lo muestra
+    *   pero la propia API devuelve un "error" por si JS no estuviera activo, asique
+    *   si existe un error llama también a la función setError (si existe) o, si
+    *   hay un error sin controlar también pero sin mensaje adecuado.
+    *   
+    * En el caso de que la API responda afirmativamente, simplemente inicia la 
+    *   sesión del usuario y lleva a este al index
+    */
+    function checkUser(defaultEvent){
+      defaultEvent.preventDefault();
+      
+      if(validarNombrePass(defaultEvent,NOMBRE) && validarNombrePass(defaultEvent,PASS)
+              && !DIV_LOGIN_BUTTON.classList.contains('oculto')){
+        $.ajax({
+          type: 'GET',
+          url: '../APIs/Usuarios.php',
+          data: { "nombre":NOMBRE.value,
+                  "pass":PASS.value
+          },
+          success: function(response){
+            if(response.nombre == NOMBRE.value){
+              sessionStorage.setItem('nombre', response.nombre);
+              sessionStorage.setItem('id_usuario', response.id_usuario);
+              window.location.href= "../index.html";
+            }else if(response.error){
+              setError(response.error);
+              PASS.focus();//Más probable fallo en pass que nombre
+            }else{
+              setError("Error inesperado");
+            }
+          },
+          error: function(error){
+           setError("Error inesperado");
+          }
+        });
+      }else{
+        //Los mensajes de error los tiene el propio validar
+            //Como son submits un "intro" sólo coge "ENTRAR" por lo que evalúo si
+                //si está con él o no, sino lo llevo al otro (borrar no tiene inputs)
+        if(DIV_LOGIN_BUTTON.classList.contains('oculto')
+                && !DIV_CHANGE_PASS_BUTTON.classList.contains('oculto'))
+            changePass(defaultEvent);
+      }
+    }
+    
+    /*
+    * 
+    * @param   {event} defaultEvent --> evento click
+    *          
+    * @returns {void}               
+    * 
+    * Es la función asignada al evento click "cambiar"
+    * 
+    * Siempre que se validen tanto el campo PASS como el campo CONFIRMAR (nombre
+    *   no es necesario para cambiar el pass) procede a hacer una llamada AJAX
+    *   a la BBDD mediante la API "Usuarios.php" para cambiarlo
+    *   
+    * Si el usuario mete mal un dato --> JS en la función validarNombrePass lo muestra
+    *   pero la propia API devuelve un "error" por si JS no estuviera activo, asique
+    *   si existe un error llama también a la función setError (si existe) o, si
+    *   hay un error sin controlar también pero sin mensaje adecuado.
+    *   
+    * En el caso de que la API responda afirmativamente, simplemente muestra un 
+    *   mensaje de confirmación, ocultando todo botón que se haya utilizado para
+    *   haber hecho este cambio
+    */
+    function changePass(defaultEvent){
+      defaultEvent.preventDefault();
+      if(validarNombrePass(defaultEvent,PASS) && validarConfirmar(defaultEvent,CONFIRMAR)){
+        $.ajax({
+          type: 'PUT',
+          url: '../APIs/Usuarios.php',
+          data: { "nombre"   :sessionStorage.getItem('nombre'),
+                  "pass"     :PASS.value,
+                  "confirmar":CONFIRMAR.value
+          },
+          success: function(response){
+            if(response.nombre){
+              MENSAJE.classList.remove('alert-danger', 'alert-primary');
+              MENSAJE.classList.add('alert-success');
+              MENSAJE.innerHTML = "Pass cambiado: "+response.nombre;
+              
+              DIV_INPUT_USUARIO.classList.add('oculto');
+              DIV_INPUT_PASS.classList.add('oculto');
+              DIV_INPUT_CONFIRMAR.classList.add('oculto');
+              DIV_CHANGE_PASS_BUTTON.classList.add('oculto');
+              
+            }else if(response.error){
+              setError(response.error);
+            }else{
+              setError("Error inesperado");
+            }
+          },
+          error: function(error){
+            setError("Error inesperado");
+          }
+        });
+      }else{
+        //Los mensajes de error los tiene el propio validar
+      }
+    }
+    
+    /*
+    * 
+    * @param   {event} defaultEvent --> evento click
+    *          
+    * @returns {void}               
+    * 
+    * Es la función asignada al evento click "borrar"
+    * 
+    * Esta función no tiene nada que validar, simplemente el usuario ha tenido
+    *   que hacer 2 clicks para confirmar que efectivamente quiere borrar su cuenta
+    *   
+    * La función llama a la API Usuarios.php con un DELETE. Si esta responde con
+    *   un error conocido, se muestra mediante setError y un mensaje adecuado, si 
+    *   es con un error desconocido, igual pero no se precisa.
+    * 
+    * En el caso de que la API responda afirmativamente, simplemente muestra un 
+    *   mensaje de confirmación, ocultando todo botón que se haya utilizado para
+    *   haber hecho este borrado
+    */
+    function deleteUser(defaultEvent){
+      defaultEvent.preventDefault();
+      $.ajax({
+        type: 'DELETE',
+        url: '../APIs/Usuarios.php',
+        data: { "id_usuario":sessionStorage.getItem('id_usuario'),
+                "nombre":sessionStorage.getItem('nombre')
+        },
+        success: function(response){
+          if(response.borrado){
+            //Mensaje de confirmación al usuario
+            MENSAJE.classList.remove('alert-danger', 'alert-primary');
+            MENSAJE.classList.add('alert-success');
+            MENSAJE.innerHTML = "El usuario <b>"+sessionStorage.getItem('nombre')+
+                    "</b> ha sido eliminado";
+
+            // Ese usuario ya no tiene sesión abierta porque no existe
+            sessionStorage.clear();
+
+            //Oculto todos los valores de una sesión iniciada
+            DIV_DEL_USER_BUTTON.classList.add('oculto');
+            ELEMENTOS_USER_LOGGEADO.classList.add('oculto');
+            
+            //Muestro lo propio de un usuario sin sesión
+            DIV_INPUT_USUARIO.classList.remove('oculto');
+            DIV_INPUT_PASS.classList.remove('oculto');
+            DIV_LOGIN_BUTTON.classList.remove('oculto');
+            document.getElementById('titulo').innerHTML = "Inicia sesión";
+
+            //Reinicio logInOut porque no recargo la página
+            const LOG_IN_OUT = document.getElementById('logInOut');
+            LOG_IN_OUT.textContent="Entrar";
+            LOG_IN_OUT.href = "login.html";
+            LOG_IN_OUT.removeEventListener('click',function(){});
+
+          }else if(response.error){
+            setError(response.error);
+          }else{
+            setError("Error inesperado");
+          }
+        },
+        error: function(error){
+          setError("No se ha podido eliminar a "+sessionStorage.getItem('nombre'));
+        }
+      });
+    }
+    
+    //Añadir a los listener las funciones
+    LOGIN_BUTTON.addEventListener('click',checkUser,false);
+    CHANGE_PASS_BUTTON.addEventListener('click',changePass,false);
+    DEL_USER_BUTTON.addEventListener('click',deleteUser,false);
+    
+  </script>
+        
+  <script>    
+    window.onload = setLogInOut_login_HTML(document.getElementById('logInOut'));
+  </script>
+    
+  <!-- Bootstrap JS -->
+   <script src="../recursos/libs/bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

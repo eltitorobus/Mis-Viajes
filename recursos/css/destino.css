@@ -1,0 +1,150 @@
+/*
+    Created on   : 13 diciembre 2021, 15:28:32
+    Author       : Alejandro Calvo Toribio
+
+    destino.css -> CSS para la página de destino
+                -> Creado a partir de
+https://findbootstrapsnippets.com/bootstrap-templates/bootstrap-dual-design-registration-form.html
+*/
+
+/* Fondo común a todo el sitio*/
+body{
+    background-color: rgba(0, 0, 0, .1);
+}
+
+/* Parte del nav para hacer log out --> Un poco más de color para distinguirlo del resto del NAV*/
+    /* Aquí no hay posibilidad de hacer login porque debes estar registrado */
+#logOut{
+    color:rgba(255,255,255,0.85);
+}
+
+#logOut:hover{
+    color: rgba(255,255,255);
+}
+
+/* Dropdown color común a todas las páginas */
+/* NAVBAR */
+
+  /* Sobrescribir las clases de dropwdown porque hace un focus que pierde el estilo dark */
+
+.dropdown-item{
+    color: rgba(255,255,255,.55);
+}
+
+.dropdown-item:hover{
+    color: rgba(255,255,255,.75);
+}
+
+/* Div Principal con margen para el nav*/
+.destino{
+    background: -webkit-linear-gradient(left, #444B5F, rgba(0,0,0,0.15));
+    margin-top: 65px;
+    padding: 3%;
+
+    /* redondeado */
+    border-radius: 100px;
+    moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+
+    /* Sombra */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.568);
+
+}
+
+/* Parte izquierda del formulario */
+.destino-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 10%;
+}
+
+/* Características de la imagen de la parte izquierda */
+.destino-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 40%;
+    /*-webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;*/
+}
+
+/* Características del div (parte izquierda) */
+.destino-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+
+/* Párrafos del bloque izquierdo*/
+.destino-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+
+/* Formulario que se encuentra dentro del contenedor*/
+.destino .destino-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btn_buscar{
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+
+/* Estilo de los elementos del nav(includos hover y active))*/
+.destino .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 20%;
+    float: right;
+}
+
+.destino .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    
+    font-size: small;
+}
+.destino .nav-tabs .nav-link:hover{
+    border: none;
+}
+.destino .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    
+    font-weight: bolder;
+    font-size: large;
+}
+
+/* Título del formulario */
+.destino-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+
+/* Mis clases */
+.oculto{
+    display: none;
+}
+
+.form-control{
+    width: auto;
+}

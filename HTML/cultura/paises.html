@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!-- 
+    Created on : 29 dic 2021, 18:05:43
+    Author     : Alejandro Calvo Toribio
+
+    paises  -> Página de cultura general no dinámica
+            -> Powered by BootStrap 5
+-->
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Alejandro Calvo">
+    <meta name="description" content="Página de cultura general por país">
+    <title>Cultura: General</title>
+
+    <!-- CSS -->
+      <!-- Bootstrap 5 CSS -->
+    <link href="../../recursos/libs/bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Mis CSS -->
+    <link href="../../recursos/css/cultura.css" rel="stylesheet" type="text/css">
+    
+    <!-- JS -->
+      <!-- JQuery -->
+    <script src="../../recursos/libs/js/jquery.js" crossorigin="anonymous"></script> 
+      <!-- JS: comportamiento "Entrar" del nav -->
+    <script src="../../recursos/js/loginLogout.js" crossorigin="anonymous"></script>
+    
+  </head>
+  <body>
+    <header>
+      <!-- Barra de navegación -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <!--Contenedor de los elementos de la navegación-->
+        <div class="container-fluid">
+          <!--Elemento principal de la web-->
+          <a class="navbar-brand" href="../../index.html"> <!--Aquí "sube" en otras "/"-> Ve a la raíz-->
+            <img src="../../recursos/img/logoWeb.png" alt="Logo Web" width="30" height="24" class="d-inline-block align-text-top"> Mis Viajes
+          </a>
+          <!--Botón hamburguesa que se va a mostrar en móviles-->
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span><!--Icono automático-->
+          </button>
+
+          <!--Contenido al que hace referencia al botón pero que conlas clases de BS aparecerá automáticamente si es más que móvil-->
+          <div id="menuNav" class="collapse navbar-collapse">
+            <!--Lista con todos los elementos de la Web (login a la derecha, separado en teléfonos)-->
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="../introduccion.html">Introducción</a></li>
+              <li class="nav-item"><a class="nav-link" href="../mapa.html">Mapa</a></li>
+              <li class="nav-item"><a class="nav-link" href="../destino.html">Destino</a></li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Cultura</a>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown03">
+                  <li><a class="dropdown-item bg-dark" href="./paises.html">General</a></li>
+                  <li><a class="dropdown-item bg-dark" href="./poblacion.html">Mapa Población</a></li>
+                  <li><a class="dropdown-item bg-dark" href="./emisiones.html">Mapa Emisiones CO2</a></li>
+                  <li><a class="dropdown-item bg-dark" href="./pib.html">Mapa PIB</a></li>
+                        <!-- Aunque parezca reiterativo el bg-dark es para sobrescribir el focus del dropdown-item -->
+                </ul>
+              </li>
+              
+            </ul>
+            <div class="d-flex">
+                <a id="logInOut" class="nav-link" href="../login.html">Entrar</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-fluid">
+        
+    <div class="text-center" id="contenedor">
+        <img id="bandera" class="mt-4" src="../../recursos/img/logoweb.png"/>
+        <h1 id="titulo">Seleccione un país</h1>
+        
+        <div class="container" id="divSelectContinente">
+          <div class="row text-center">
+              <div class="col-sm">
+                  <label>Continente</label>
+              </div>
+              <div class="col-sm">
+                  <select id="selectContinente" class="select form-control mb-3">
+                    <option selected>Indiferente</option>
+                    <option>Europa</option>
+                    <option>África</option>
+                    <option>América</option>
+                    <option>Asia</option>
+                    <option>Oceanía</option>
+                  </select>
+              </div>
+          </div>
+        </div>
+        
+        <div class="container oculto" id="divOcultar">
+          <div class="row text-center" id="divSelectPais">
+                  
+          </div>
+        </div>
+        
+        <div id="resultado" class="oculto"><!-- Aquí el resultado de la consulta--></div>
+    </div>
+        
+  </main>
+   
+  <script>
+    //Declaración de las variables
+    const DIV_OCULTAR = document.getElementById('divOcultar');
+    const DIV_SELECT_CONTINENTE = document.getElementById('divSelectContinente');
+    
+    const SELECT_CONTINENTE = document.getElementById("selectContinente");
+    
+    //Función que muestra los países que son resultados de la búsqueda
+    function setDivPaises(paises){
+      const DIV_PAISES = document.getElementById('divSelectPais');
+      const DIV_OCULTAR= document.getElementById('divOcultar');
+      const DIV_SELECT_CONTINENTE = document.getElementById('divSelectContinente');
+      
+      //Creación de los enlaces a los países
+      for (var i = 0; i < paises.length; i++) {
+        DIV_PAISES.innerHTML+= 
+         "<div class='col-sm-2 p-3 mb-2'>"+
+           "<a href='#' class='shadow-link'>"+paises[i]+"</a>"+
+         "</div>";
+      }
+      //Se muestran
+      DIV_OCULTAR.classList.remove('oculto');
+      
+      //Ponerle listener a los enlaces creados
+        //Cierra todo menos la imagen y el título
+            //Settea ambos acordes al país seleccionado
+        //Consulta a la BBDD (función externa) y establece sus características
+            //Por problemas de ámbito se hace con función externa 
+                //setCaracteristicas --> Las settea
+                //getCaracteriticas  --> Para settearlas, las necesita --> AJAX
+                //drawCaracteriticas --> Si las obtiene OK, esta función las dibuja
+      document.querySelectorAll('.shadow-link').forEach(a => {
+        a.addEventListener('click',function(event){
+            let pais = event.target.text;
+            DIV_OCULTAR.classList.add('oculto');
+            DIV_SELECT_CONTINENTE.classList.add('oculto');
+            
+            document.getElementById("bandera")
+               .setAttribute("src", "../../recursos/img/banderas/"+pais+".png");
+            document.getElementById('titulo').innerHTML =  pais;
+            
+            setCaracteristicas(pais);
+            
+        });
+      });
+   }
+    
+    //Listener para el select que llama a la función previa para mostrar los países
+    SELECT_CONTINENTE.addEventListener('change',function(continente){
+      //Llamada a la API de PHP para recibir los países a mostar
+      $.ajax({
+        type: 'GET',
+        url: '../../APIs/Paises.php',
+        data: {"continente": continente.target[continente.target.selectedIndex].text},
+        success: function(response){
+          if(response[0].nombre){
+            let paises = [];
+                
+            for (var i=0; i<response.length;i++) {
+              paises[i] = response[i]["nombre"];
+            }
+            
+            setDivPaises(paises);
+          }else{
+            alert("Error inesperado");
+          }
+        },
+        error: function(error){
+          alert("Error inesperado");
+        }
+      });
+    });
+      
+    //Función que es llamada por el listener al enlace del país seleccionado (click)
+    function setCaracteristicas(pais){
+        //Pido las caracteristicas a la API mediante una función
+        getCaracteristicas(pais);
+    }
+    
+    //Si devuelve los datos llama a la función de dibujar con el resultado
+    function getCaracteristicas(pais){
+        //Llamada a la API de PHP para recibir los países a mostar
+      $.ajax({
+        async: false,
+        type: 'GET',
+        url: '../../APIs/Paises.php',
+        data: {"pais": pais},
+        success: function(response){
+          if(response[0].nombre){
+            drawCaracteristicas(response[0]);
+          }else{
+            alert("Error inesperado");
+          }
+        },
+        error: function(error){
+          alert("Error inesperado");
+        }
+      });
+    }
+    
+    //Dibuja los resultados de las características
+    function drawCaracteristicas(caracts){
+        //En este momento está todo lo que no interesa oculto
+            //Solo hay que desocultar donde irá el resultado
+        const RESULTADO = document.getElementById('resultado');
+        RESULTADO.innerHTML = 
+            "<p>El país <b>"+caracts.nombre+"</b>"+
+            ", se encuentra en el hemisferio "+caracts.hemisferio+
+            ", en el continente de "+caracts.continente+"</p>";
+        RESULTADO.innerHTML += 
+            "<p>El idioma oficial y mayoritario del país es el "+caracts.idioma+
+            " y la capital es "+caracts.capital+"</p>";
+        
+        if(caracts.playa == 1)
+            RESULTADO.innerHTML += "<p>En "+caracts.nombre+" usted puede "+
+                "disfrutar de unas excelentes playas. ";
+        else
+            RESULTADO.innerHTML += "<p>En "+caracts.nombre+" usted no podría "+
+                "disfrutar de un baño en la playa. ";
+        
+        if(caracts.montana == 1)
+            RESULTADO.innerHTML += "Es un país montañoso con unas rutas de  "+
+                "senderismo espectaculares</p>";
+        else
+            RESULTADO.innerHTML += "Es un país bastante llano, ideal para un "+
+                "turismo tranquilo, sin grandes esfuerzos</p>";
+        
+        if(caracts.safari == 1)
+            RESULTADO.innerHTML += "<p>Si es usted un amante de los animales, "+
+                "debería saber que "+caracts.nombre+" cuenta con muchas opciones"+
+                " de safari para su disfrute</p>";
+        
+        if(caracts.cultural == 1)
+            RESULTADO.innerHTML += "<p>Tenga en cuenta el gran valor del "+
+                "patrimonio cultural e histórico de este país</p>";
+        else
+            RESULTADO.innerHTML += "<p>No se caracteriza por un turismo cultural</p>";
+        
+        if(caracts.ong == 1)
+            RESULTADO.innerHTML += "<p>Si usted es un amante de la ayuda al "+
+                "prójimo, "+caracts.nombre+" es un país ideal para ayudar a "+
+                "sus habitantes</p>";
+        else
+            RESULTADO.innerHTML += "<p>Es un país rico con una buena calidad de vida</p>";
+        
+        if(caracts.exotico == 1)
+            RESULTADO.innerHTML += "<p>Sea la envidia de sus amigos. Los "+
+                "destinos exóticos como "+caracts.nombre+" son los más deseados"+
+                " y envidiados por todos</p>";
+        
+        if(caracts.turistico == 1)
+            RESULTADO.innerHTML += "<p>Es uno de los países más visitados del mundo</p>";
+        else
+            RESULTADO.innerHTML += "<p>¡Sea diferente! Los turistas suelen "+
+                "elegir otro tipo de destinos</p>";
+        
+        if(caracts.peligroso == 1)
+            RESULTADO.innerHTML += "<p>Debería preveer el viaje porque el "+
+                "índice de criminalidad de "+caracts.nombre+" es muy elevado "+
+                "y los turistas son un blanco de los delincuentes</p>";
+        else
+            RESULTADO.innerHTML += "<p>"+caracts.nombre+" es un país fiable y seguro</p>";
+        
+        switch(caracts.covid){
+            case 0:
+                RESULTADO.innerHTML += "<p>"+caracts.nombre+" no reporta "+
+                    "información segura sobre el tratamiento a los turistas por"+
+                    " las circunstancias de la pandemia</p>";
+                break;
+            case 1:
+                RESULTADO.innerHTML += "<p>"+caracts.nombre+" exige pasaporte "+
+                    "COVID o PCR negativa en las 48 horas previas</p>";
+                break;
+            case 2:
+                RESULTADO.innerHTML += "<p>En "+caracts.nombre+" es obligatoria "+
+                "la cuarentena a su llegada</p>";
+                break;
+            case 3:
+                RESULTADO.innerHTML += "<p>En la actualidad no se puede viajar a "+
+                    caracts.nombre+"</p>";
+                break;
+            case 4:
+                RESULTADO.innerHTML += "<p>Es uno de los pocos países sin "+
+                    "restricciones</p>";
+                break;
+        }
+        
+        //Se muestra
+        RESULTADO.classList.remove('oculto');
+        
+        //Botón para salir
+        RESULTADO.innerHTML += "<input type='button' onclick='location.reload();'"+
+                " value='Salir' class='btn btn-lg mb-3'/>";
+    }
+        
+
+
+
+
+    
+        
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+      const PAISES = ["Afganistán","Albania","Alemania","Andorra","Angola","Antigua y Barbuda","Arabia Saudí",
+"Argelia","Argentina","Armenia","Australia","Austria","Azerbaiyán","Bahamas","Bangladés",
+"Barbados","Barein","Bélgica","Belice","Benin","Bielorrusia","Birmania","Bolivia",
+"Bosnia-Herzegovina","Botsuana","Brasil","Brunei","Bulgaria","Burkina Faso","Bután",
+"Cabo Verde","Camboya","Camerún","Canadá","Catar","Chad","Chile","China","Chipre","Colombia",
+"Comoras","Congo","Corea del Norte","Corea del Sur","Costa de Marfil","Costa Rica","Croacia",
+"Cuba","Dinamarca","Dominica","Ecuador","Egipto","El Salvador","Emiratos Arabes Unidos",
+"Eritrea","Eslovaquia","Eslovenia","España","EEUU","Estonia","Etiopia","Filipinas",
+"Finlandia","Fiji","Francia","Gabón","Gambia","Georgia","Gana","Granada","Grecia",
+"Guatemala","Guinea","Guinea Ecuatorial","Guinea Bisau","Guyana","Haití","Honduras",
+"Hungría","India","Indonesia","Irak","Irán","Irlanda","Islandia","Islas Marshall",
+"Islas Salomón","Israel","Italia","Jamaica","Japón","Jordania","Kazajistán","Kenia",
+"Kirguistán","Kiribati","Kuwait","Laos","Lesoto","Letonia","Líbano","Liberia","Libia",
+"Liechtenstein","Lituania","Luxemburgo","Macedonia","Madagascar","Malasia","Malaui",
+"Maldivas","Mali","Malta","Marruecos","Mauricio","Mauritania","México","Micronesia",
+"Moldavia","Mónaco","Mongolia","Montenegro","Mozambique","Namibia","Nauru","Nepal",
+"Nicaragua","Niger","Nigeria","Noruega","Nueva Zelanda","Omán","Paises Bajos","Pakistán",
+"Palaos","Palestina","Panamá","Papúa Nueva Guinea","Paraguay","Perú","Polonia","Portugal",
+"Reino Unido","República Centroafricana","Republica Checa","República Democrática del Congo",
+"República Dominicana","Ruanda","Rumania","Rusia","Samoa","San Cristobal y Nieves",
+"San Marino","San Vicente y las Granadinas","Santa Lucia","Santo Tomé y Príncipe",
+"Senegal","Serbia","Seychelles","Sierra Leona","Singapur","Siria","Somalia","Somalia",
+"Sri Lanka","Suazilandia","Sudáfrica","Sudán","Sudán del Sur","Suecia","Suiza",
+"Surinam","Tailandia","Tanzania","Tayikistán","Timor Oriental","Togo","Tonga",
+"Trinidad y Tobago","Túnez","Turkmenistán","Turquía","Tuvalu","Ucrania","Uganda",
+"Uruguay","Uzbekistán","Vanuatu","Vaticano","Venezuela","Vietnam","Yemen",
+"Yibuti","Zambia","Zimbaue"];*/
+      
+      
+  </script>
+      
+        
+    <!-- En Mapa sólo puede haber usuarios loggeados -->
+    <script>
+      window.onload = setLogInOut_cultura_HTML(document.getElementById('logInOut'));
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="../../recursos/libs/bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+    
+    </body>
+</html>

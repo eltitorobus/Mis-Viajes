@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+    Created on : 4 diciembre 2021, 19:15:39
+    Author     : Alejandro Calvo Toribio
+    
+    registro    -> Página de registro de la aplicación Mis Viajes
+                -> Powered by BootStrap 4 & 5
+                -> Creado a partir de login.html
+-->
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Alejandro Calvo">
+  <meta name="description" content="Web de Registro de Mis Viajes">
+  <title>Registrarse en el sitio</title>
+
+  <!-- CSS -->
+    <!-- Bootstrap 4 CSS -->
+  <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../recursos/libs/bootstrap/assets/dist/css/bootstrap4.min.css">
+    <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="../recursos/libs/bootstrap/assets/dist/css/bootstrap.min.css">
+    <!-- Mis CSS -->
+  <link rel="stylesheet" href="../recursos/css/loginRegister.css">
+  
+  <!-- JS -->
+    <!-- JQuery para AJAX -->
+    <script src="../recursos/libs/js/jquery.js" crossorigin="anonymous"></script>
+    <!-- JS: comportamiento "Entrar" del nav -->
+    <script src="../recursos/js/loginLogout.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <header>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <!--Contenedor de los elementos de la navegación-->
+      <div class="container-fluid">
+        <!--Elemento principal de la web-->
+        <a class="navbar-brand" href="../index.html"> <!--Aquí "sube" en otras "/"-> Ve a la raíz-->
+          <img src="../recursos/img/logoWeb.png" alt="Logo Web" width="30" height="24" class="d-inline-block align-text-top"> Mis Viajes
+        </a>
+        <!--Botón hamburguesa que se va a mostrar en móviles-->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menuNavLogin" aria-controls="menuNavLogin" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span><!--Icono automático-->
+        </button>
+
+        <!--Contenido al que hace referencia al botón pero que conlas clases de BS aparecerá automáticamente si es más que móvil-->
+        <div id="menuNavLogin" class="collapse navbar-collapse">
+          <!--Lista con todos los elementos de la Web (login a la derecha, separado en teléfonos)-->
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="introduccion.html">Introducción</a></li>
+              <li class="nav-item"><a class="nav-link" href="mapa.html">Mapa</a></li>
+              <li class="nav-item"><a class="nav-link" href="destino.html">Destino</a></li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Cultura</a>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown03">
+                    <li><a class="dropdown-item bg-dark" href="./cultura/paises.html">General</a></li>
+                    <li><a class="dropdown-item bg-dark" href="./cultura/poblacion.html">Mapa Población</a></li>
+                    <li><a class="dropdown-item bg-dark" href="./cultura/emisiones.html">Mapa Emisiones CO2</a></li>
+                    <li><a class="dropdown-item bg-dark" href="./cultura/pib.html">Mapa PIB</a></li>
+                        <!-- Aunque parezca reiterativo el bg-dark es para sobrescribir el focus del dropdown-item -->
+                </ul>
+              </li>
+              
+            </ul>
+              <a id="logInOut" class="nav-link" href="login.html">Entrar</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container pt-4">
+      <div class="row justify-content-center pt-2 mt-5 m-1">
+        <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario mb-4">
+          <form action="#" method="post">
+            <div class="form-group text-center pt-3">
+              <img src="../recursos/img/logoWeb.png" alt="login" class="mb-4">
+              <h1 class="text-dark">REGISTRO</h1>
+            </div>
+            <div class="form-group mx-sm-4">
+              <div class="row">
+                  <span class="mb-2 bg-danger text-center" id="error"></span>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label for="nombre" class="text-dark">Nombre</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mx-sm-4">
+              <div class="row">
+                <div class="col-4">
+                  <label for="contraseña" class="text-dark">Contraseña</label>
+                </div>
+                <div class="col-8">
+                  <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mx-sm-4 pb-3">
+              <div class="row">
+                <div class="col-4">
+                  <label for="confirmar" class="text-dark">Confirmar</label>
+                </div>
+                <div class="col-8">
+                  <input type="password" class="form-control" placeholder="Confirma pass" name="confirmar" id ="confirmar" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mx-sm-4 pb-2">
+                <input type="submit" class="btn btn-block acceder" value="REGISTRO" name="registrar" id="registrar">
+            </div>
+            <div class="form-group mx-sm-4 text-right">
+              <span class=""><a href="login.html" class="shadow-link">Ya estoy registrado</a></span>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+    
+  <!-- Añado una validación con el click de REGISTRAR-->
+  <script>
+    //Constantes para validar en JS
+    const REGISTRAR = document.getElementById('registrar');
+    const NOMBRE    = document.getElementById('nombre');
+    const PASS      = document.getElementById('pass');
+    const CONFIRMAR = document.getElementById('confirmar');
+
+    const ERROR     = document.getElementById('error');
+    
+    //Listener del botón que va a validar
+    REGISTRAR.addEventListener('click',validar,false);
+    
+    //3 Funciones que sirven para validar
+      //Función que no deja que el nombre esté vacío o sea mayor de 16 carácteres
+    function validarNombrePass(defaultEvent, input){
+      if(input.value == "" || input.value == null || input.value == undefined){
+        ERROR.textContent = input.placeholder+" no puede estar vacío";
+        defaultEvent.preventDefault();
+        input.focus();
+        return false;
+      }
+        
+      if(input.value.length > 16){
+        ERROR.textContent = input.placeholder+" tiene que tener 16 carácteres como máximo";
+        defaultEvent.preventDefault();
+        input.focus();
+        return false;
+      }
+        
+      if(input === NOMBRE){ //Pass si puede ser numérico o tener carácteres especiales
+        if( Number.isInteger(parseInt(NOMBRE.value) ) //Si es todo número sin letras
+          || /[^A-Za-z\d]/.test(NOMBRE.value)){ //Lo mismo + carácteres especiales
+            ERROR.textContent = input.placeholder+" no puede ser un número o contener carácteres especiales";
+            defaultEvent.preventDefault();
+            input.focus();
+            return false;
+        }
+      }
+      
+      return true;
+    }
+        //Función que sirve para !"" !>16 y que sea igual que pass el confirmar
+    function validarConfirmar(defaultEvent, input){
+      if(validarNombrePass(defaultEvent, input)){ //Si hay error devuelve true, por eso se niega
+        if(input.value == PASS.value){ // Única opción de que vaya bien, no "", no > 16 y son iguales --> TRUE
+          return true;
+        }else{  // Valida bien pero no ha introducido la misma y se le indica
+          ERROR.textContent = "Debe introducir la misma contraseña";
+          defaultEvent.preventDefault();
+          input.focus();
+        }
+      }
+    
+      return false;
+    }
+    
+    //Función que llama a las previas y da el retorno
+    function validar(defaultEvent){
+        defaultEvent.preventDefault();
+        ERROR.textContent = "";
+        
+        if(!validarNombrePass(defaultEvent, NOMBRE))
+          return false;
+        if(!validarNombrePass(defaultEvent, PASS))
+          return false;
+        if(!validarConfirmar(defaultEvent, CONFIRMAR))
+          return false;
+          
+        // Si no ha habido error en la validación de JS -> Al back
+        $.ajax({
+          type: 'POST',
+            url: '../APIs/Usuarios.php',
+            data: { "nombre":NOMBRE.value,
+                    "pass":PASS.value,
+                    "confirmar":CONFIRMAR.value
+            },
+            success: function(response){
+              if(response.nombre == NOMBRE.value){
+                    sessionStorage.setItem('nombre', response.nombre);
+                    sessionStorage.setItem('id_usuario', response.id_usuario);
+                    window.location.href= '../index.html';
+              }else{
+                if(response.error) ERROR.textContent = response.error;
+              }
+            },
+            error: function(error){
+              ERROR.textContent = "Error inesperado";
+            }
+        });
+    }
+
+  </script>
+
+  <script>
+    window.onload = setLogInOut_registro_HTML(document.getElementById('logInOut'));
+  </script> 
+    
+  <!-- Bootstrap JS -->
+  <script src="../recursos/libs/bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
